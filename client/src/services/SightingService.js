@@ -4,5 +4,14 @@ export default {
   getSightings(){
     return fetch(baseURL)
     .then(res => res.json())
+  },
+
+  postSighting (sighting) {
+    return fetch(baseURL, {
+      method: "POST",
+      body: JSON.stringify(sighting),  // TODO: Research what this does
+      headers: { 'Content-Type': 'application/json'}
+    })
+    .then(res => res.json());
   }
 }

@@ -6,13 +6,20 @@
 
 <script>
 import Sighting from './Sighting';
+import { eventBus } from "@/main.js";
 
 export default {
 	name: 'sightings-grid',
 	components: {
 		'sighting': Sighting
 	},
-	props: ['sightings']
+	props: ['sightings'],
+
+	mounted(){
+		eventBus.$on('sighting-added', sighting => {
+			this.sightings.push(sighting)
+		})
+	}
 }
 </script>
 
