@@ -31,6 +31,13 @@ const createRouter = function (collection) {
       });
   });
 
+  //CREATE
+  router.post("/", (req, res) => {
+    collection
+      .insertOne(req.body)
+      .then(result => res.json(result.ops[0]));
+  })
+
   return router;
 };
 
