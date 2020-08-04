@@ -18,7 +18,11 @@ export default {
 	mounted(){
 		eventBus.$on('sighting-added', sighting => {
 			this.sightings.push(sighting)
-		})
+		});
+
+		eventBus.$on("sighting-deleted", sighting => {
+			this.sightings.splice(this.sightings.indexOf(sighting), 1);
+		});
 	}
 }
 </script>
